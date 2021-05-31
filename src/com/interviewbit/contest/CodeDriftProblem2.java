@@ -1,4 +1,4 @@
-package com.interviewbit;
+package com.interviewbit.contest;
 
 public class CodeDriftProblem2 {
 	public static void main(String[] args) {
