@@ -1,34 +1,14 @@
 package com.interviewbit.linkedlist;
 
+import java.util.Arrays;
+
 public class LinkedListIntersectionNode {
 	public static void main(String[] args) {
-
-		ListNode a = new ListNode(4);
-		ListNode b = new ListNode(9);
-
-		ListNode newNode = new ListNode(6);
-		a.next = newNode;
-		ListNode newNode2 = new ListNode(7);
-		newNode.next = newNode2;
-		ListNode newNode3 = new ListNode(1);
-		newNode2.next = newNode3;
-
-		ListNode newNodeB = new ListNode(3);
-		b.next = newNodeB;
-		ListNode newNodeB2 = new ListNode(5);
-		newNodeB.next = newNodeB2;
-		ListNode newNodeB3 = new ListNode(7);
-		newNodeB2.next = newNodeB3;
-		ListNode newNodeB4 = new ListNode(1);
-		newNodeB3.next = newNodeB4;
-
+		ListNode a = LinkedListUtil.createNodesFromList(Arrays.asList(4, 6, 7, 1));
+		ListNode b = LinkedListUtil.createNodesFromList(Arrays.asList(9, 3, 5, 7, 1));
 		/*
-		 * ListNode a = new ListNode(1); ListNode b = new ListNode(3);
-		 * 
-		 * ListNode newNode = new ListNode(2); a.next = newNode;
-		 * 
-		 * ListNode newNodeB = new ListNode(4); b.next = newNodeB; ListNode newNodeB2 =
-		 * new ListNode(5); newNodeB.next = newNodeB2;
+		 * ListNode a = LinkedListUtil.createNodesFromList(Arrays.asList(1, 2));
+		 * ListNode b = LinkedListUtil.createNodesFromList(Arrays.asList(3, 4, 5));
 		 */
 
 		ListNode intersectionNode = getIntersectionNode(b, a);
