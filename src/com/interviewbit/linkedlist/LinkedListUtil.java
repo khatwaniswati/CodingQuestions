@@ -38,14 +38,17 @@ public class LinkedListUtil {
 	}
 
 	public static ListNode createNodesFromList(List<Integer> lst) {
-		Integer head = lst.get(0);
-		ListNode headNode = new ListNode(head);
-		ListNode parent = headNode;
-		for (int i = 1; i < lst.size(); i++) {
-			ListNode newNode = new ListNode(lst.get(i));
-			parent.next = newNode;
-			parent = newNode;
+		if (!lst.isEmpty()) {
+			Integer head = lst.get(0);
+			ListNode headNode = new ListNode(head);
+			ListNode parent = headNode;
+			for (int i = 1; i < lst.size(); i++) {
+				ListNode newNode = new ListNode(lst.get(i));
+				parent.next = newNode;
+				parent = newNode;
+			}
+			return headNode;
 		}
-		return headNode;
+		return null;
 	}
 }
