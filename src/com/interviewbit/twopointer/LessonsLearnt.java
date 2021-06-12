@@ -21,7 +21,6 @@ public class LessonsLearnt {
 		if (resultArrayList.contains(arrayList)) {
 			System.out.println("yes");
 		}
-
 	}
 
 	private static long abs(int i) {
