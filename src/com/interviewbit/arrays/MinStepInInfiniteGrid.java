@@ -30,18 +30,22 @@ public class MinStepInInfiniteGrid {
 		for (int i = 0; i < A.size(); i++) {
 			lst.add(new AbstractMap.SimpleEntry<Integer, Integer>(A.get(i), B.get(i)));
 		}
+		System.out.println(lst);
 		IntStream.range(0, lst.size() - 1).forEach(i -> {
 			getSteps(lst.get(i), lst.get(i + 1));
 		});
 		return result;
 	}
 
-	public static Entry<Integer, Integer> getSteps(Entry<Integer, Integer> e1, Entry<Integer, Integer> e2) {
+	public static void getSteps(Entry<Integer, Integer> e1, Entry<Integer, Integer> e2) {
 		//System.out.println(e2.getKey() + " " + e1.getKey() + " " + e2.getValue() + " " + e1.getValue());
 		//System.out.println(Math.max(Math.abs(e2.getKey() - e1.getKey()), Math.abs(e2.getValue() - e1.getValue())));
 		result += Math.max(Math.abs(e2.getKey() - e1.getKey()), Math.abs(e2.getValue() - e1.getValue()));
-		return new AbstractMap.SimpleEntry<Integer, Integer>(
-				Math.max(Math.abs(e2.getKey() - e1.getKey()), Math.abs(e2.getValue() - e1.getValue())), 0);
+		/*
+		 * return new AbstractMap.SimpleEntry<Integer, Integer>(
+		 * Math.max(Math.abs(e2.getKey() - e1.getKey()), Math.abs(e2.getValue() -
+		 * e1.getValue())), 0);
+		 */
 
 	}
 }
