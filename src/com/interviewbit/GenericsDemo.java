@@ -1,5 +1,6 @@
 package com.interviewbit;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 class Printer {
 
@@ -14,6 +15,13 @@ class Printer {
 /***** Don't change anything in the code below *****/
 public class GenericsDemo {
 	public static void main(String[] args) {
+		
+		Object [] myObjects = {
+				
+				new Integer(3),
+				new String("s")
+		};
+		Arrays.sort(myObjects);
 		Printer myPrinter = new Printer();
 		Integer[] intArray = { 1, 2, 3 };
 		String[] stringArray = { "Hello", "World" };
