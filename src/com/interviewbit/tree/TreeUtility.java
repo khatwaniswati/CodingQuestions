@@ -24,14 +24,33 @@ public class TreeUtility {
 
 	static TreeNode root = null;
 
-	public static TreeNode createTree(List<Integer> list) {
+	public static TreeNode createBinaryTree(List<Integer> list) {
 		for (Integer integer : list) {
-			addNode(integer);
+			addNodeInBinaryTree(integer);
+		}
+		return root;
+	}
+	
+	private static void addNodeInBinaryTree(Integer value) {
+		if (isEmpty())
+			root = new TreeNode(value);
+		else
+			addNodeInBinaryTree(root, value);
+	}
+
+	private static void addNodeInBinaryTree(TreeNode root2, Integer value) {
+		TreeNode newNode = new TreeNode(value);
+		
+	}
+
+	public static TreeNode createBinarySearchTree(List<Integer> list) {
+		for (Integer integer : list) {
+			addNodeInBST(integer);
 		}
 		return root;
 	}
 
-	private static void addNode(int value) {
+	private static void addNodeInBST(int value) {
 		if (isEmpty())
 			root = new TreeNode(value);
 		else
@@ -46,7 +65,7 @@ public class TreeUtility {
 				return;
 			}
 			addNode(trav.left, value);
-		} else if (value > trav.val) {
+		} else if (value >= trav.val) {
 			if (trav.right == null) {
 				trav.right = newNode;
 				return;

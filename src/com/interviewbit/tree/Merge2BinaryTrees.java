@@ -16,9 +16,9 @@ public class Merge2BinaryTrees {
 		 */
 		List<Integer> lst = Arrays.asList(12, 11, 14);
 		List<Integer> lst2 = Arrays.asList(3, 6, 1);
-		TreeNode createTreeA = TreeUtility.createTree(lst);
+		TreeNode createTreeA = TreeUtility.createBinarySearchTree(lst);
 		TreeUtility.root = null;
-		TreeNode createTreeB = TreeUtility.createTree(lst2);
+		TreeNode createTreeB = TreeUtility.createBinarySearchTree(lst2);
 		TreeNode merge = merge(createTreeA, createTreeB);
 		List<Integer> inorderTraversalMerge = new ArrayList<>();
 		System.out.println(TreeUtility.inorderTraversal(merge, inorderTraversalMerge));

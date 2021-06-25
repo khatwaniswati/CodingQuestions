@@ -8,9 +8,9 @@ public class IdenticalBinaryTrees {
 	public static void main(String[] args) {
 		List<Integer> lst = Arrays.asList(2, 1, 4, 5);
 		List<Integer> lst2 = Arrays.asList(3, 6, 1, 2, 7);
-		TreeNode createTreeA = TreeUtility.createTree(lst);
+		TreeNode createTreeA = TreeUtility.createBinarySearchTree(lst);
 		TreeUtility.root = null;
-		TreeNode createTreeB = TreeUtility.createTree(lst2);
+		TreeNode createTreeB = TreeUtility.createBinarySearchTree(lst2);
 		System.out.println(isSameTree(createTreeA, createTreeB));
 		System.out.println(isSameTreeCopied(createTreeA, createTreeB));
 	}
