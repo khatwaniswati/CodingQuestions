@@ -20,21 +20,21 @@ class ProfitTargetsResult {
 		List<List<Integer>> result = new ArrayList<>();
 		List<Integer> collect = stocksProfit.stream().filter(i -> i < target).sorted().collect(Collectors.toList());
 		LinkedList<Integer> copyList = new LinkedList<>(collect);
-		System.out.println(copyList);
+		//System.out.println(copyList);
 		while(!copyList.isEmpty()) {
 			int current=copyList.poll();
-			System.out.println("cu;"+current+" "+copyList);
+			//System.out.println("cu;"+current+" "+copyList);
 			if (copyList.contains((int)target - current)) {
-				System.out.println("Yess");
+				//System.out.println("Yess");
 				List<Integer> l1 = Arrays.asList(current, (int) target - current);
-				System.out.println(l1);
+				//System.out.println(l1);
 				if (!result.contains(l1))
 					result.add(l1);
 				copyList.remove(new Integer((int)target - current));
-				System.out.println("After:"+copyList);
+				//System.out.println("After:"+copyList);
 			}
 		}
-		System.out.println(result);
+		//System.out.println(result);
 		return result.size();
 	}
 
@@ -72,9 +72,5 @@ public class ProfitTargets {
 		int result = ProfitTargetsResult.stockPairs(stocksProfit, target);
 		System.out.println(result);
 		
-		String s1="abc";
-		String s2=s1;
-		s1+="d";
-		System.out.println(s1+" "+s2+" "+(s1==s2));
 	}
 }
