@@ -1,6 +1,8 @@
 package com.interviewbit.tree;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 class TreeNode {
 	int val;
@@ -15,7 +17,7 @@ class TreeNode {
 
 	@Override
 	public String toString() {
-		return "TreeNode [val=" + val + "]";
+		return "TreeNode [val=" + val + ", left=" + left + ", right=" + right + "]";
 	}
 
 }
@@ -23,25 +25,6 @@ class TreeNode {
 public class TreeUtility {
 
 	static TreeNode root = null;
-
-	public static TreeNode createBinaryTree(List<Integer> list) {
-		for (Integer integer : list) {
-			addNodeInBinaryTree(integer);
-		}
-		return root;
-	}
-	
-	private static void addNodeInBinaryTree(Integer value) {
-		if (isEmpty())
-			root = new TreeNode(value);
-		else
-			addNodeInBinaryTree(root, value);
-	}
-
-	private static void addNodeInBinaryTree(TreeNode root2, Integer value) {
-		TreeNode newNode = new TreeNode(value);
-		
-	}
 
 	public static TreeNode createBinarySearchTree(List<Integer> list) {
 		for (Integer integer : list) {
@@ -87,5 +70,32 @@ public class TreeUtility {
 		inorderTraversalA.add(A.val);
 		inorderTraversal(A.right, inorderTraversalA);
 		return inorderTraversalA;
+	}
+	public static void bfsLevelwise() {
+		System.out.print("BFS: ");
+		Queue<TreeNode> q1 = new LinkedList<>();
+		Queue<TreeNode> q2 = new LinkedList<>();
+		q1.offer(root);
+		while (!q1.isEmpty() || !q2.isEmpty()) {
+			while (!q1.isEmpty()) {
+				TreeNode trav = q1.poll();
+				System.out.print(trav.val + ", ");
+				if (trav.left != null)
+					q2.offer(trav.left);
+				if (trav.right != null)
+					q2.offer(trav.right);
+			}
+			System.out.print(" | ");
+			while (!q2.isEmpty()) {
+				TreeNode trav = q2.poll();
+				System.out.print(trav.val + ", ");
+				if (trav.left != null)
+					q1.offer(trav.left);
+				if (trav.right != null)
+					q1.offer(trav.right);
+			}
+			System.out.print(" | ");
+		}
+		System.out.println();
 	}
 }
