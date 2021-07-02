@@ -64,13 +64,20 @@ public class TreeUtility {
 	public static List<Integer> inorderTraversal(TreeNode A, List<Integer> inorderTraversalA) {
 		if (A == null)
 			return inorderTraversalA;
-		// print left subtree
 		inorderTraversal(A.left, inorderTraversalA);
-		// print root
 		inorderTraversalA.add(A.val);
 		inorderTraversal(A.right, inorderTraversalA);
 		return inorderTraversalA;
 	}
+	
+	public static void inorderTraversal(TreeNode A) {
+		if (A == null)
+			return;
+		inorderTraversal(A.left);
+		System.out.println(A.val);
+		inorderTraversal(A.right);
+	}
+	
 	public static void bfsLevelwise() {
 		System.out.print("BFS: ");
 		Queue<TreeNode> q1 = new LinkedList<>();
