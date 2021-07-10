@@ -3,6 +3,8 @@ package com.hackerrank.morganstanley;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 class FountainActivation {
 	public static void main(String[] args) {
@@ -38,5 +40,9 @@ class FountainActivation {
 
 		}
 		return layers;
+	}
+	
+	public int getResult(UnaryOperator<Integer> func) {
+		return func.apply(1);
 	}
 }
