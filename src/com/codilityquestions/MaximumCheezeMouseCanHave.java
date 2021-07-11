@@ -1,5 +1,6 @@
 package com.codilityquestions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,7 +12,8 @@ import java.util.stream.IntStream;
 import javafx.util.Pair;
 
 public class MaximumCheezeMouseCanHave {
-
+	static List<Integer> maintainListToSum = new ArrayList<>();
+	
 	public static void main(String[] args) {
 		/*
 		 * Scanner sc = new Scanner(System.in); int t = sc.nextInt(); int[][] result =
@@ -20,8 +22,11 @@ public class MaximumCheezeMouseCanHave {
 		 * result[i]=arr; } sc.close(); for (int i = 0; i < t; i++) {
 		 * System.out.println(maxCheezeMouseCanHave(result[i])); }
 		 */
-		int[] arr = {9 ,118, 202 ,104 ,10};
-		System.out.println(maxCheezeMouseCanHave(arr));
+		int[] arr = {9 ,118, 202 ,104 ,10,20,30};
+		//System.out.println(maxCheezeMouseCanHave(arr));
+		
+		getLeftRightSubArraysForMax(arr);
+		System.out.println(maintainListToSum);
 	}
 
 	private static long maxCheezeMouseCanHave(int[] arr) {
@@ -55,6 +60,35 @@ public class MaximumCheezeMouseCanHave {
 		return sum;
 	}
 	
+	private static void getLeftRightSubArraysForMax(int[] arr){
+		
+		AtomicInteger max = getMax(arr);
+		System.out.println(max.get());
+		maintainListToSum.add(max.get());
+		
+		List<Integer> indexes = findMaxIndices(arr, max);
+		
+		Pair<int[], int[]> leftRightSubArrays = getLeftRightSubArrays(arr, indexes.get(0));
+		int[] leftSubArray =  leftRightSubArrays.getKey();
+		int[] rightSubArray =  leftRightSubArrays.getValue();
+		System.out.println("left:"+Arrays.toString( leftSubArray));
+		System.out.println("right:"+Arrays.toString(rightSubArray));
+		
+		if(leftSubArray!= null && leftSubArray.length != 0) {
+			if(leftSubArray.length == 2 ) {
+				maintainListToSum.add(Math.max(leftSubArray[0], leftSubArray[1]));
+			}else {
+				getLeftRightSubArraysForMax(leftSubArray);
+			}
+		}
+		if(rightSubArray!=null && rightSubArray.length != 0) {
+			if(rightSubArray.length == 2 ) {
+				maintainListToSum.add(Math.max(rightSubArray[0], rightSubArray[1]));
+			}else {
+				getLeftRightSubArraysForMax(rightSubArray);
+			}
+		}
+	}
 	private static Pair<int[], int[]> getLeftRightSubArrays(int[] arr, int cutIndex){
 		int arrLength = arr.length;
 		int[] leftMaxArr=null;
@@ -69,11 +103,10 @@ public class MaximumCheezeMouseCanHave {
 	}
 	
 	private static List<Integer> findMaxIndices(int[] arr, AtomicInteger max) {
-		List<Integer> indexes = IntStream.range(0, arr.length)
+		return IntStream.range(0, arr.length)
 			.filter(i->arr[i]==max.get())
 			.boxed()
 			.collect(Collectors.toList());
-		return indexes;
 	}
 
 	private static int getFrequency(int[] arr, AtomicInteger max) {
