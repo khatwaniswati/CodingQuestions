@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class Result {
+class ResultNNNO {
 
 	/*
 	 * Complete the 'countOptions' function below.
@@ -52,7 +52,7 @@ class Result {
 public class GroupingOptionsSolution {
 	public static void main(String[] args) throws IOException {
 //		long result = Result.nToKGroups(8, 4);
-		long result = Result.countOptions(7, 3);
+		long result = ResultNNNO.countOptions(7, 3);
 		System.out.println(result);
 	}
 }

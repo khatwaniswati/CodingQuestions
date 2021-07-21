@@ -21,6 +21,8 @@ class ListNode {
 public class LinkedListUtil {
 
 	public static int findLengthOfLinkedList(ListNode x) {
+		if(x==null)
+			return 0;
 		int len = 1;
 		while (x.next != null) {
 			len++;
@@ -30,6 +32,9 @@ public class LinkedListUtil {
 	}
 
 	public static void printList(ListNode n) {
+		if(n==null)
+			System.out.println("Empty");
+				
 		while (n != null) {
 			System.out.print(n.toString());
 			n = n.next;

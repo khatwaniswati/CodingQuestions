@@ -1,12 +1,15 @@
 package com.backtracking;
 
+import java.util.Arrays;
+
 public class MaximalSwapString {
 
 	public static void main(String[] args) {
 		MaximalSwapString m = new MaximalSwapString();
-		System.out.println(m.solve("254", 1));
-		System.out.println(m.solve("254", 2));
-		System.out.println(m.solve("254", 5));
+		/*
+		 * System.out.println(m.solve("254", 1)); System.out.println(m.solve("254", 2));
+		 * System.out.println(m.solve("254", 5));
+		 */
 		System.out.println(m.solve("7599", 2));
 	}
 
@@ -34,6 +37,7 @@ public class MaximalSwapString {
 	String sol;
 
 	public void gen(char[] arr, int ind, int B) {
+		System.out.println(Arrays.toString(arr)+" "+ind+" "+B);
 		if (ind >= arr.length)
 			return;
 		if (B == 0) {
@@ -51,6 +55,7 @@ public class MaximalSwapString {
 				if (str.compareTo(sol) > 0) {
 					sol = str;
 				}
+				System.out.println(sol);
 				gen(arr, ind + 1, B - 1);
 				swap(arr, ind, i);
 			}

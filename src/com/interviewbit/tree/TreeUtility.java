@@ -17,7 +17,7 @@ class TreeNode {
 
 	@Override
 	public String toString() {
-		return "TreeNode [val=" + val + ", left=" + left + ", right=" + right + "]";
+		return "val=" + val + "| L:" + left + "|R:=" + right ;
 	}
 
 }
