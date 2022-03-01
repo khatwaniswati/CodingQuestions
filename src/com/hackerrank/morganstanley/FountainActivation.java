@@ -2,15 +2,48 @@ package com.hackerrank.morganstanley;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 class FountainActivation {
 	public static void main(String[] args) {
-		int[] ranges = {1,2,1,0,2,1,0,1};
-		System.out.println(minTaps(7, ranges ));
+		List<Integer> asList = Arrays.asList( 2, 1, 1, 2, 1 );
+		System.out.println(fountainActivation(asList));
 	}
+
+	public static int fountainActivation(List<Integer> locations) {
+		int size=locations.size();
+		int[] dp = new int[size];
+		for (int i = 0; i < size; i++) {
+			dp[i] = -1;
+		}
+
+		int left;
+		int right;
+
+		for (int i = 0; i < size; i++) {
+			left = Math.max(i - locations.get(i), 0);
+			right = Math.min(i + (locations.get(i) + 1), size);
+			dp[left] = Math.max(dp[left], right);
+		}
+		//System.out.println(Arrays.toString(dp));
+
+		int count = 1;
+
+		int next = 0;
+		right = dp[0];
+
+		for (int i = 0; i < size; i++) {
+			next = Math.max(next, dp[i]);
+			if (i == right) {
+				count++;
+				right = next;
+			}
+		}
+		return count;
+	}
+
 	public static int minTaps(int n, int[] ranges) {
 		Map<Integer, Integer> map = new HashMap();
 		for (int i = 0; i < ranges.length; i++) {
@@ -41,7 +74,7 @@ class FountainActivation {
 		}
 		return layers;
 	}
-	
+
 	public int getResult(UnaryOperator<Integer> func) {
 		return func.apply(1);
 	}

@@ -2,9 +2,9 @@ package com.hackerrank.morganstanley;
 
 import java.util.Date;
 
-public class InputWrapper {
+public final class InputWrapperImmutableDate {
 
-	public InputWrapper(Date date, String city, int min, int max) {
+	public InputWrapperImmutableDate(Date date, String city, int min, int max) {
 		super();
 		this.date = new Date(date.getTime());
 		this.city = city;
@@ -57,7 +57,7 @@ public class InputWrapper {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		InputWrapper other = (InputWrapper) obj;
+		InputWrapperImmutableDate other = (InputWrapperImmutableDate) obj;
 		if (city == null) {
 			if (other.city != null)
 				return false;
